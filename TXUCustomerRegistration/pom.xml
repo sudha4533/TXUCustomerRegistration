@@ -5,8 +5,8 @@
 	<groupId>com.txu.registrationapp</groupId>
 	<name>TXUCustomerRegistration</name>
 	<packaging>war</packaging>
-	<version>1.0.0-BUILD-SNAPSHOT</version>
-	<properties>
+	<!-- <version>1.0.0-BUILD-SNAPSHOT</version>
+	 --><properties>
 		<java-version>1.8</java-version>
 		<org.springframework-version>4.0.3.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.7.4</org.aspectj-version>
