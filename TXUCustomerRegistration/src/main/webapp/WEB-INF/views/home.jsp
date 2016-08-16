@@ -30,7 +30,6 @@ h3, p {
 	<p>Name: &nbsp; ${customer.firstname}  ${customer.lastname}</p>
 	<p>Phone: &nbsp; ${customer.phone}</p>
 	<p>Email: &nbsp; ${customer.email}</p>
-	<br>
 	<p>Service Plan details</p>
 	<p>Name: &nbsp;${customer.servicePlan.plan_name}</p>
 	<p>Description: &nbsp;${customer.servicePlan.description}</p>

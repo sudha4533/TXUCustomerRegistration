@@ -31,40 +31,43 @@ public class ServicePlanProvider {
 
 			serviceplans = new SoapClient().getServices();
 
-			ServicePlan plan = serviceplans.get(0);		
+			if (serviceplans != null) {
+				
+				ServicePlan plan = serviceplans.get(0);
+				int service_id = plan.getServiceID();
 
-			int service_id = plan.getServiceID();
+				String msg = service_id + ":" + customer.getId();
 
-			String msg = service_id + ":" + customer.getId();
+				msgSender.sendMessage(msg);
 
-			msgSender.sendMessage(msg);
-						
-			com.txu.registrationapp.model.ServicePlan servicePlan = new com.txu.registrationapp.model.ServicePlan();
+				com.txu.registrationapp.model.ServicePlan servicePlan = new com.txu.registrationapp.model.ServicePlan();
 
-			servicePlan.setService_id(plan.getServiceID());
-			servicePlan.setDescription(plan.getDescription());
-			servicePlan.setPlan_name(plan.getPlanName());
+				servicePlan.setService_id(plan.getServiceID());
+				servicePlan.setDescription(plan.getDescription());
+				servicePlan.setPlan_name(plan.getPlanName());
 
-			int day, month, year;
-			day = plan.getStartDate().getDay();
-			month = plan.getStartDate().getMonth();
-			year = plan.getStartDate().getYear();
+				int day, month, year;
+				day = plan.getStartDate().getDay();
+				month = plan.getStartDate().getMonth();
+				year = plan.getStartDate().getYear();
 
-			Date date = new Date(year - 1900, month, day);
+				Date date = new Date(year - 1900, month, day);
 
-			servicePlan.setStart_date(date);
+				servicePlan.setStart_date(date);
 
-			day = plan.getEndDate().getDay();
-			month = plan.getEndDate().getMonth();
-			year = plan.getEndDate().getYear();
+				day = plan.getEndDate().getDay();
+				month = plan.getEndDate().getMonth();
+				year = plan.getEndDate().getYear();
 
-			date = new Date(year - 1900, month, day);
+				date = new Date(year - 1900, month, day);
 
-			servicePlan.setEnd_date(date);
+				servicePlan.setEnd_date(date);
 
-			customer.setServicePlan(servicePlan);
+				customer.setServicePlan(servicePlan);
 
-			return true;
+				return true;
+			}
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();

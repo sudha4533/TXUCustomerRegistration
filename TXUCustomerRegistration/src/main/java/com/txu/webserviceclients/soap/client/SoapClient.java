@@ -2,9 +2,7 @@ package com.txu.webserviceclients.soap.client;
 
 import java.util.List;
 
-import com.txu.webserviceclients.soap.wsdlimports.ServicePlan;
-import com.txu.webserviceclients.soap.wsdlimports.UtilityPlanService;
-import com.txu.webserviceclients.soap.wsdlimports.UtilityPlanServiceImpl;
+import com.txu.registrationapp.model.ServicePlan;
 
 public class SoapClient {
 
