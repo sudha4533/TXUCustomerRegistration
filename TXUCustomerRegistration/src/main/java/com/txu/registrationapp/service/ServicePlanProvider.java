@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.txu.registrationapp.model.Customer;
 import com.txu.webserviceclients.jms.MyMessageSender;
 import com.txu.webserviceclients.soap.client.SoapClient;
-import com.txu.webserviceclients.soap.wsdlimports.ServicePlan;
+import com.txu.registrationapp.soapservice.ServicePlan;
 
 /**
  * @author Sudha Gunamgari
@@ -34,7 +34,7 @@ public class ServicePlanProvider {
 			if (serviceplans != null) {
 				
 				ServicePlan plan = serviceplans.get(0);
-				int service_id = plan.getServiceID();
+				int service_id = plan.getServiceId();
 
 				String msg = service_id + ":" + customer.getId();
 
@@ -42,7 +42,7 @@ public class ServicePlanProvider {
 
 				com.txu.registrationapp.model.ServicePlan servicePlan = new com.txu.registrationapp.model.ServicePlan();
 
-				servicePlan.setService_id(plan.getServiceID());
+				servicePlan.setService_id(plan.getServiceId());
 				servicePlan.setDescription(plan.getDescription());
 				servicePlan.setPlan_name(plan.getPlanName());
 

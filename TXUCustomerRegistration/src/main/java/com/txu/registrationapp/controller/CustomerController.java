@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,23 +26,23 @@ public class CustomerController {
 	}
 
 	@RequestMapping(value = "/customer/add", method = RequestMethod.POST)
-	public String addCustomer(HttpServletRequest request, @ModelAttribute("customer") Customer customer) {
+	public String addCustomer(HttpServletRequest request, @ModelAttribute("customer") Customer customer, ModelMap model) {
 
 		if (customer != null) {
 
 			if (customerService.addCustomer(customer) && customer.getServicePlan() != null) {
 
-				request.setAttribute("customer", customer);
-				request.setAttribute("message", "Registration successfull");
+				model.put("customer", customer);
+				model.put("message", "Registration successfull");
 				return "home";
 
 			} else {
-				request.setAttribute("customer", customer);
-				request.setAttribute("message", "Registration successfull, But Service Plan is not updated");
+				model.put("customer", customer);
+				model.put("message", "Registration successfull, But Service Plan is not updated");
 				return "home";
 			}
 		} else {
-			request.setAttribute("message", "Registration failed, Please register again");
+			model.put("message", "Registration failed, Please register again");
 			return "register";
 
 		}
